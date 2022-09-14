@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+ 
+    
+ 
+</head>
+<body>
+ 
+<form class="formulario">
+    <div>
+        <label>Nombre del alumno</label><input type="text" name="nombre">
+    </div>
+    <div>
+        <label>Nota del alumno (0-10)</label><input type="number" name="nota" min="0" max="10">
+    </div>
+    <div>
+        <br><input type="submit" value="Agregar" class="agregar">
+    </div>
+</form>
+ 
+<table id="listado" class='hide'>
+    <thead>
+        <th>Alumno</th>
+        <th>Nota</th>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+ 
+<div id="calculos" class='hide'></div>
+ 
+<script src="main.js"></script>
+
+</body>
+</html>
