@@ -117,7 +117,7 @@ function calculos() {
         }
  
         
-        if(parseFloat(tds[1].innerHTML)>=7) {
+        if(parseFloat(tds[1].innerHTML)>=8.50) {
             promocionados.push(tds[0].innerHTML);
         }
  
