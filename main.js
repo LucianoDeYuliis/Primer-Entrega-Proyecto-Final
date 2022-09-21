@@ -1,8 +1,20 @@
+document.getElementById("Nombre").addEventListener("keyup", myFunction);
+
+function myFunction() {
+		let campo = document.getElementById("Nombre");
+    if (campo.value == '') {
+    	campo.style.borderColor = "red";
+    }
+    else {
+      campo.style.borderColor = "green";
+    }
+}
+
 document.querySelector("input[class=agregar]").addEventListener("click",function(e){
     e.preventDefault();
  
-    var nombre=document.querySelector("input[name=nombre]");
-    var nota=document.querySelector("input[name=nota]");
+    let nombre=document.querySelector("input[name=nombre]");
+    let nota=document.querySelector("input[name=nota]");
  
     
     if(!nombre.value)
