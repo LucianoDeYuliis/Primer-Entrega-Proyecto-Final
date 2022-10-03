@@ -1,7 +1,7 @@
-document.getElementById("Nombre").addEventListener("keyup", myFunction);
+document.getElementById("dato").addEventListener("keyup", myFunction);
 
 function myFunction() {
-		let campo = document.getElementById("Nombre");
+		let campo = document.getElementById("dato");
     if (campo.value == '') {
     	campo.style.borderColor = "red";
     }
@@ -10,12 +10,25 @@ function myFunction() {
     }
 }
 
+
+    let datoAlumno = localStorage.getItem("datoAlumno");//Retrieve the stored data
+
+		datoAlumno = JSON.parse(datoAlumno); //Converts string to object
+
+		if(datoAlumno == null) //If there is no data, initialize an empty array
+			datoAlumno = [];
+
 document.querySelector("input[class=agregar]").addEventListener("click",function(e){
     e.preventDefault();
- 
-    let nombre=document.querySelector("input[name=nombre]");
-    let nota=document.querySelector("input[name=nota]");
- 
+
+    let alumno = JSON.stringify({
+        nombre :document.querySelector("input[name=nombre]").value,
+        nota   :document.querySelector("input[name=nota]").value,
+    });
+    
+    datoAlumno.push(alumno);
+    localStorage.setItem("datoAlumno", JSON.stringify(datoAlumno));
+    
     
     if(!nombre.value)
     {
@@ -148,4 +161,5 @@ function calculos() {
  
     document.getElementById("calculos").innerHTML=result;
  
+    
 }
