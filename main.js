@@ -21,40 +21,44 @@ function myFunction() {
 document.querySelector("input[class=agregar]").addEventListener("click",function(e){
     e.preventDefault();
 
-    let alumno = JSON.stringify({
-        nombre :document.querySelector("input[name=nombre]").value,
-        nota   :document.querySelector("input[name=nota]").value,
-    });
+
+    let inputNombre = document.querySelector("input[name=nombre]")
+    let inputNota = document.querySelector("input[name=nota]")
+   
     
+    let alumno = JSON.stringify({
+        nombre: inputNombre.value,
+        nota: inputNota.value,
+     });
     datoAlumno.push(alumno);
     localStorage.setItem("datoAlumno", JSON.stringify(datoAlumno));
     
     
-    if(!nombre.value)
+    if(!inputNombre.value)
     {
-        nombre.classList.add("error");
+        inputNombre.classList.add("error");
         return;
     }
-    nombre.classList.remove("error");
+    inputNombre.classList.remove("error");
  
     
-    if(isNaN(parseInt(nota.value)) || (parseInt(nota.value)<0 && parseInt(nota.value)>10))
+    if(isNaN(parseInt(inputNota.value)) || (parseInt(inputNota.value)<0 && parseInt(inputNota.value)>10))
     {
-        nota.classList.add("error");
+        inputNota.classList.add("error");
         return;
     }
-    nota.classList.remove("error");
+    inputNota.classList.remove("error");
  
     
     let tr=document.createElement("tr");
  
     let tdNombre=document.createElement("td");
-    let txt=document.createTextNode(nombre.value);
+    let txt=document.createTextNode(inputNombre.value);
     tdNombre.appendChild(txt);
     tdNombre.className="nombre";
  
     let tdNota=document.createElement("td");
-    txt=document.createTextNode(nota.value);
+    txt=document.createTextNode(inputNota.value);
     tdNota.appendChild(txt);
     tdNota.className="right";
  
@@ -87,9 +91,9 @@ document.querySelector("input[class=agregar]").addEventListener("click",function
     document.getElementById("calculos").classList.remove("hide");
  
     
-    nota.value="";
-    nombre.value="";
-    nombre.focus();
+    inputNota.value="";
+    inputNombre.value="";
+    inputNombre.focus();
  
     
     calculos();
