@@ -2,13 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
- 
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     
  
 </head>
 <body>
  
-<form class="formulario">
+<form class="formulario" onsubmit="return validar()">
     <div>
         <label>Nombre del alumno</label><input id="dato" placeholder="Nombre" type="text" name="nombre">
     </div>

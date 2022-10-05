@@ -11,16 +11,15 @@ function myFunction() {
 }
 
 
-    let datoAlumno = localStorage.getItem("datoAlumno");//Retrieve the stored data
+    let datoAlumno = localStorage.getItem("datoAlumno");
 
-		datoAlumno = JSON.parse(datoAlumno); //Converts string to object
+		datoAlumno = JSON.parse(datoAlumno); 
 
-		if(datoAlumno == null) //If there is no data, initialize an empty array
+		if(datoAlumno == null)
 			datoAlumno = [];
 
 document.querySelector("input[class=agregar]").addEventListener("click",function(e){
     e.preventDefault();
-
 
     let inputNombre = document.querySelector("input[name=nombre]")
     let inputNota = document.querySelector("input[name=nota]")
@@ -32,8 +31,29 @@ document.querySelector("input[class=agregar]").addEventListener("click",function
      });
     datoAlumno.push(alumno);
     localStorage.setItem("datoAlumno", JSON.stringify(datoAlumno));
-    
-    
+
+
+     if(inputNombre.value.length == 0){
+        swal({
+            title: "No ingreso alumno.",
+            icon: "warning",
+            button: "Perfecto!",
+          });       
+     }else if(inputNota.value.length == 0){
+        swal({
+            title: "No ingreso nota del alumno.",
+            icon: "warning",
+            button: "Perfecto!",
+        });
+     }else{
+        swal({
+            title: "Alumno ingresado!",
+            icon: "success",
+            button: "Excelente!",
+          });
+     }
+
+
     if(!inputNombre.value)
     {
         inputNombre.classList.add("error");
@@ -165,5 +185,4 @@ function calculos() {
  
     document.getElementById("calculos").innerHTML=result;
  
-    
 }
