@@ -70,41 +70,41 @@ document.querySelector("input[class=agregar]").addEventListener("click",function
     inputNota.classList.remove("error");
  
     
-    let tr=document.createElement("tr");
- 
-    let tdNombre=document.createElement("td");
-    let txt=document.createTextNode(inputNombre.value);
-    tdNombre.appendChild(txt);
-    tdNombre.className="nombre";
- 
-    let tdNota=document.createElement("td");
-    txt=document.createTextNode(inputNota.value);
-    tdNota.appendChild(txt);
-    tdNota.className="right";
- 
-    let tdRemove=document.createElement("td");
-    let buttonRemove=document.createElement("input")
-    buttonRemove.type="button";
-    buttonRemove.value="Eliminar";
-    buttonRemove.onclick=function () {
-        
-        this.parentElement.parentElement.remove();
- 
-        
-        if(document.getElementById("listado").querySelector("tbody").querySelectorAll("tr").length==0)
-        {
-            document.getElementById("listado").classList.add("hide");
-            document.getElementById("calculos").classList.add("hide");
-        }
-        calculos();
-    };
-    tdRemove.appendChild(buttonRemove);
- 
-    tr.appendChild(tdNombre);
-    tr.appendChild(tdNota);
-    tr.appendChild(tdRemove);
- 
-    let tbody=document.getElementById("listado").querySelector("tbody").appendChild(tr);
+    datoAlumno.forEach(alumno => {
+        let alumnoParseado = JSON.parse(alumno)
+        let tr = document.createElement("tr");
+    
+        let tdNombre = document.createElement("td");
+        let txt = document.createTextNode(alumnoParseado.nombre);
+        tdNombre.appendChild(txt);
+        tdNombre.className = "nombre";
+    
+        let tdNota = document.createElement("td");
+        txt = document.createTextNode(alumnoParseado.nota);
+        tdNota.appendChild(txt);
+        tdNota.className = "right";
+    
+        let tdRemove = document.createElement("td");
+        let buttonRemove = document.createElement("input")
+        buttonRemove.type = "button";
+        buttonRemove.value = "Eliminar";
+        buttonRemove.onclick = function () {
+            this.parentElement.parentElement.remove();
+    
+            if (document.getElementById("listado").querySelector("tbody").querySelectorAll("tr").length == 0) {
+                document.getElementById("listado").classList.add("hide");
+                document.getElementById("calculos").classList.add("hide");
+            }
+            calculos();
+        };
+        tdRemove.appendChild(buttonRemove);
+    
+        tr.appendChild(tdNombre);
+        tr.appendChild(tdNota);
+        tr.appendChild(tdRemove);
+    
+        document.getElementById("listado").querySelector("tbody").appendChild(tr);
+    });
  
     
     document.getElementById("listado").classList.remove("hide");
@@ -135,7 +135,6 @@ function calculos() {
     let peorNotaAlumnos=[];
     let peorNota=10;
  
-    let mediaNota=0;
  
     
     for (let i=0;i<alumnosAgregados.length;i++)
@@ -170,13 +169,11 @@ function calculos() {
             promocionados.push(tds[0].innerHTML);
         }
  
-        mediaNota+=parseFloat(tds[1].innerHTML);
     }
  
     
     let result="<div>La mejor nota es de: <span>"+mejorNotaAlumno+" ("+mejorNota+")</span></div>";
     result+="<div>La peor nota es de: <span>"+peorNotaAlumnos+" ("+peorNota+")</span></div>";
-    result+="<div>La media es de: <span>"+(mediaNota/alumnosAgregados.length).toFixed(2)+"</span></div>";
     result+="<div>Los aprobados son: <span>"+aprobados+"</span></div>";
     result+="<div>Los suspendidos son: <span>"+suspendidos+"</span></div>";
     result+="<div>Los promocionados son: <span>"+promocionados+"</span></div>";

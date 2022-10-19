@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
     
  
 </head>
@@ -30,8 +30,25 @@
 </table>
  
 <div id="calculos" class='hide'></div>
+
+<form  id="form"
+  action="https://formspree.io/f/mrgdaaye"
+  method="POST"
+>
+  <label>
+    Email:
+    <input type="email" name="email">
+  </label>
+  <label>
+    Mensaje:
+    <textarea name="message"></textarea>
+  </label>
+  
+  <button type="submit">Enviar</button>
+</form>
  
 <script src="main.js"></script>
-
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
